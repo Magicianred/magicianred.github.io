@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>PomoDo</title>
+
+  <!--Mobile Optimization-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+  <!--CSS-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+  <!--Icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="images/tomato.png" />
+
+  <!--Page Transition-->
+  <link rel="stylesheet" href="css/animsition.min.css">
+
+</head>
+<body>
+  <div class="animsition">
+    <header>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper white">
+            <a href="index.html" class="brand-logo animsition-link">PomoDo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="index.html" class="animsition-link">PomoDo</a></li>
+              <li><a class="i18n-habits animsition-link" href="abitudini.html">Abitudini</a></li>
+              <li><a class="i18n-calendar animsition-link" href="calendario.html">Calendario</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!--Side Navbar-->
+      <ul class="sidenav" id="mobile-demo">
+        <li><div class="user-view">
+          <div class="background grey lighten-3"></div>
+          <img class="circle materialboxed" style="transform: translateX(150%);" src="images/tomato1.png">
+          <br>
+        </div></li>
+        <li><a href="index.html" class="animsition-link">PomoDo</a></li>
+        <li><a class="i18n-habits animsition-link" href="abitudini.html">Abitudini</a></li>
+        <li><a class="i18n-calendar animsition-link" href="calendario.html">Calendario</a></li>
+      </ul>
+      <!--End Side Navbar-->
+    </header>
+
+    <main>
+      <!--PomoDo-->
+      <div id="pomodo-container" class="row">
+        <div id="pomodo-timer"class="col s12 m8"></div>
+
+        <div id="pomodo-clock" class="col s12 m8">
+          <!--Target-->
+          <div><input type="text" id="pomodo-clock-task" class="i18n-objective" placeholder="Scrivi il tuo obiettivo..."/></div>
+
+          <!--Buttons-->
+          <div id="pomodo-clock-actions">
+            <button id="pomodo-start" class="waves-effect btn grey lighten-4">
+              <i class="fas fa-play" id="play-icon"></i>
+              <i class="fas fa-pause hidden" id="pause-icon"></i>
+            </button>
+            <button id="pomodo-stop" class="hidden waves-effect btn grey lighten-4">
+              <i class="fas fa-stop"></i>
+            </button>
+          </div>
+
+          <!--Description-->
+          <div id="pomodo-clock-title">
+            <span class="i18n-changes" style="color: #fafafa; font-weight: bold; font-style: oblique; text-shadow: 1px 1px 2px #000, 1px 1px 2px #000;">
+              I cambiamenti in questa sezione si rifletteranno all'inizio della prossima sessione di lavoro/pausa.
+            </span>
+          </div>
+
+          <!--Minutes of Work and Break-->
+          <div id="pomodo-clock-actions">
+            <div class="pomodo-input">
+              <label class="i18n-min-work">Minuti di lavoro</label>
+              <input name="input-work-duration" id="input-work-duration" type="number" class="validate"/>
+            </div>
+            <div class="pomodo-input">
+              <label class="i18n-min-break">Minuti di pausa</label>
+              <input name="input-break-duration" id="input-break-duration" type="number" class="validate"/>
+            </div>
+          </div>
+
+          <!--Session Information-->
+          <div id="pomodo-info">
+            <h3 class="i18n-session">Le tue Sessioni </h3>
+            <ul style="color: #fafafa; text-shadow: 1px 1px 2px #000, 1px 1px 2px #000;" id="pomodo-sessions">
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="i18n-work" style="display: none">Lavoro</div>
+      <div class="i18n-break" style="display: none">Pausa</div>
+      <!--End PomoDo-->
+
+
+      <!--Translation Button-->
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large grey darken-4">
+          <i class="large fas fa-language"></i>
+        </a>
+        <ul>
+          <li><a href="#" data-lang="it" class="btn-floating btn-small translate-btn italy"></a></li>
+          <li><a href="#" data-lang="en" class="btn-floating btn-small translate-btn england"></a></li>
+        </ul>
+      </div>
+    </main>
+    <!--End Translation Button-->
+
+    <!--Footer-->
+    <footer class="page-footer">
+      <a class="links grey-text text-darken-4" href="https://www.carmensantoro.it">© 2020 Carmen Agnese Santoro&nbsp;</a>
+      <span class="grey-text text-darken-4">&#124;&nbsp;</span>
+      <a class="links i18n-credits grey-text text-darken-4" href="crediti.html">Crediti</a>
+    </footer>
+    <!--End Footer-->
+  </div>
+
+  <!--Scripts-->
+  <script src="js/background.js"></script>
+  <script src='js/progressBar.js'></script>
+  <script src="js/pomodo.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/sidenav.js"></script>
+
+  <!--Translation Button-->
+  <script src="js/FloatingActionButton.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <!--Page Transition-->
+  <script src="js/animsition.min.js"></script>
+  <script src="js/pageTransition.js"></script>
+
+</body>
+</html>

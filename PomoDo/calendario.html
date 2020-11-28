@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>PomoDo</title>
+
+  <!--Mobile Optimization-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+  <!--CSS-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+  <!--Calendario-->
+  <link rel="stylesheet" href="css/calendario.css">
+
+  <!--Icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="images/tomato.png" />
+
+  <!--Page Transition-->
+  <link rel="stylesheet" href="css/animsition.min.css">
+
+</head>
+<body class="calendario">
+  <div class="animsition">
+    <header>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper white">
+            <a href="index.html" class="brand-logo animsition-link">PomoDo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="index.html" class="animsition-link">PomoDo</a></li>
+              <li><a class="i18n-habits animsition-link" href="abitudini.html">Abitudini</a></li>
+              <li><a class="i18n-calendar animsition-link" href="calendario.html">Calendario</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!--Side Navbar-->
+      <ul class="sidenav" id="mobile-demo">
+        <li><div class="user-view">
+          <div class="background grey lighten-3"></div>
+          <img class="circle materialboxed" style="transform: translateX(150%);" src="images/tomato1.png">
+          <br>
+        </div></li>
+        <li><a href="index.html" class="animsition-link">PomoDo</a></li>
+        <li><a class="i18n-habits animsition-link" href="abitudini.html">Abitudini</a></li>
+        <li><a class="i18n-calendar animsition-link" href="calendario.html">Calendario</a></li>
+      </ul>
+      <!--End Side Navbar-->
+    </header>
+
+    <main>
+      <!--Calendar-->
+      <div class="calendar disable-selection col s12 m6" id="calendar">
+        <div class="left-side">
+          <div class="current-day text-center">
+            <h1 class="calendar-left-side-day"></h1>
+            <div class="calendar-left-side-day-of-week"></div>
+          </div>
+          <div class="current-day-events">
+            <div class="i18n-events">Eventi correnti:</div>
+            <ul class="current-day-events-list"></ul>
+          </div>
+          <div class="add-event-day">
+            <input type="text" class="add-event-day-field i18n-createEvent" placeholder="Crea un nuovo evento">
+            <span class="fa fa-plus-circle cursor-pointer add-event-day-field-btn"></span>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="text-right calendar-change-year">
+            <div class="calendar-change-year-slider">
+              <span class="fa fa-caret-left cursor-pointer calendar-change-year-slider-prev"></span>
+              <span class="calendar-current-year"></span>
+              <span class="fa fa-caret-right cursor-pointer calendar-change-year-slider-next"></span>
+            </div>
+          </div>
+          <div class="calendar-month-list">
+            <ul class="calendar-month"></ul>
+          </div>
+          <div class="calendar-week-list">
+            <ul class="calendar-week"></ul>
+          </div>
+          <div class="calendar-day-list">
+            <ul class="calendar-days"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="i18n-noEvents" style="display: none">Nessun evento</div>
+      <!--Week Days-->
+      <div class="i18n-weekDays" style="display: none">Domenica-Lunedì-Martedì-Mercoledì-Giovedì-Venerdì-Sabato</div>
+      <!--Months-->
+      <div class="i18n-months" style="display: none">Gen-Feb-Mar-Apr-Mag-Giu-Lug-Ago-Set-Ott-Nov-Dic</div>
+      <!--End Calendar-->
+
+
+      <!--Translation Button-->
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large grey darken-4">
+          <i class="large fas fa-language"></i>
+        </a>
+        <ul>
+          <li><a href="#" data-lang="it" class="btn-floating btn-small translate-btn italy"></a></li>
+          <li><a href="#" data-lang="en" class="btn-floating btn-small translate-btn england"></a></li>
+        </ul>
+      </div>
+    </main>
+    <!--End Translation Button-->
+
+    <!--Footer-->
+    <footer class="page-footer">
+      <a class="links grey-text text-darken-4" href="https://www.carmensantoro.it">© 2020 Carmen Agnese Santoro&nbsp;</a>
+      <span class="grey-text text-darken-4">&#124;&nbsp;</span>
+      <a class="links i18n-credits grey-text text-darken-4" href="crediti.html">Crediti</a>
+    </footer>
+    <!--End Footer-->
+  </div>
+
+  <!-- Scripts-->
+  <script src="js/background.js"></script>
+  <script src="js/sidenav.js"></script>
+  <script src="js/materialize.js"></script>
+
+  <!--Calendario-->
+  <script async src="js/calendario.js"></script>
+
+  <!--Translation Button-->
+  <script src="js/FloatingActionButton.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <!--Page Transition-->
+  <script src="js/animsition.min.js"></script>
+  <script src="js/pageTransition.js"></script>
+
+</body>
+</html>

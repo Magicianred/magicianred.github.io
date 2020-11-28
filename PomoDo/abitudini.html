@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>PomoDo</title>
+
+  <!--Mobile Optimization-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+  <!--CSS-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+  <!--Icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="images/tomato.png" />
+
+  <!--Page Transition-->
+  <link rel="stylesheet" href="css/animsition.min.css">
+
+</head>
+<body>
+  <div class="animsition">
+    <header>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper white">
+            <a href="index.html" class="brand-logo animsition-link">PomoDo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="index.html" class="animsition-link">PomoDo</a></li>
+              <li><a class="i18n-habits animsition-link" href="abitudini.html">Abitudini</a></li>
+              <li><a class="i18n-calendar animsition-link" href="calendario.html">Calendario</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!--Side Navbar-->
+      <ul class="sidenav" id="mobile-demo">
+        <li><div class="user-view">
+          <div class="background grey lighten-3"></div>
+          <img class="circle materialboxed" style="transform: translateX(150%);" src="images/tomato1.png">
+          <br>
+        </div></li>
+        <li><a href="index.html" class="animsition-link">PomoDo</a></li>
+        <li><a class="i18n-habits animsition-link" href="abitudini.html">Abitudini</a></li>
+        <li><a class="i18n-calendar animsition-link" href="calendario.html">Calendario</a></li>
+      </ul>
+      <!--End Side Navbar-->
+    </header>
+
+
+
+    <main>
+
+      <!--Habit-->
+      <div class="containerHabit">
+        <div class="center-align">
+          <img src="images/habit.png">
+        </div>
+        <ul class="todo-list js-todo-list"></ul>
+        <div class="empty-state">
+          <h2 class="empty-state__title i18n-addHabit">Abitudini</h2>
+          <p class="empty-state__description i18n-habitDescription">Cosa vorresti fare ogni giorno?</p>
+        </div>
+        <form class="js-form">
+          <input autofocus type="text" placeholder="Esempio: Bere 2 litri d'acqua al giorno" class="js-todo-input i18n-exampleHabit js-form-placeholder">
+        </form>
+      </div>
+      <!--End Habit-->
+
+      <!--Translation Button-->
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large grey darken-4">
+          <i class="large fas fa-language"></i>
+        </a>
+        <ul>
+          <li><a href="#" data-lang="it" class="btn-floating btn-small translate-btn italy"></a></li>
+          <li><a href="#" data-lang="en" class="btn-floating btn-small translate-btn england"></a></li>
+        </ul>
+      </div>
+    </main>
+    <!--End Translation Button-->
+
+    <!--Footer-->
+    <footer class="page-footer">
+      <a class="links grey-text text-darken-4" href="https://www.carmensantoro.it">© 2020 Carmen Agnese Santoro&nbsp;</a>
+      <span class="grey-text text-darken-4">&#124;&nbsp;</span>
+      <a class="links i18n-credits grey-text text-darken-4" href="crediti.html">Crediti</a>
+    </footer>
+    <!--End Footer-->
+  </div>
+
+  <!--Scripts-->
+  <script src="js/background.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/sidenav.js"></script>
+
+  <!--Habit-->
+  <script src="js/abitudini.js"></script>
+
+  <!--Translation Button-->
+  <script src="js/FloatingActionButton.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <!--Page Transition-->
+  <script src="js/animsition.min.js"></script>
+  <script src="js/pageTransition.js"></script>
+
+</body>
+</html>

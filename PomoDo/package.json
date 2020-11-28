@@ -1,0 +1,26 @@
+{
+  "name": "pomodo",
+  "version": "1.0.0",
+  "description": "PomoDo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carmensantoro/PomoDo.git"
+  },
+  "author": "Santoro Carmen Agnese",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carmensantoro/PomoDo/issues"
+  },
+  "homepage": "https://github.com/carmensantoro/PomoDo#readme",
+  "dependencies": {
+    "@dogstudio/highway": "^2.2.1",
+    "core-js": "^3.6.5",
+    "gsap": "^3.2.6",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {}
+}
