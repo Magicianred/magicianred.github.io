@@ -54,22 +54,23 @@
     <main>
       <!--PomoDo-->
       <div id="pomodo-container" class="row">
-        <div id="pomodo-timer"class="col s12 m8"></div>
+        <!--Buttons-->
+        <div id="pomodo-clock-actions">
+          <button id="audio-switch" class="waves-effect btn grey lighten-4">
+            <i class="fas fa-bell" id="audio-on-icon"></i>
+            <i class="fas fa-bell-slash hidden" id="audio-off-icon"></i>
+          </button>
+          <button id="pomodo-start" class="waves-effect btn grey lighten-4">
+            <i class="fas fa-play" id="play-icon"></i>
+            <i class="fas fa-pause hidden" id="pause-icon"></i>
+          </button>
+          <button id="pomodo-stop" class="hidden waves-effect btn grey lighten-4">
+            <i class="fas fa-stop"></i>
+          </button>
+        </div>
+        <div id="pomodo-timer"class="col s6 m4"></div>
 
-        <div id="pomodo-clock" class="col s12 m8">
-          <!--Target-->
-          <div><input type="text" id="pomodo-clock-task" class="i18n-objective" placeholder="Scrivi il tuo obiettivo..."/></div>
-
-          <!--Buttons-->
-          <div id="pomodo-clock-actions">
-            <button id="pomodo-start" class="waves-effect btn grey lighten-4">
-              <i class="fas fa-play" id="play-icon"></i>
-              <i class="fas fa-pause hidden" id="pause-icon"></i>
-            </button>
-            <button id="pomodo-stop" class="hidden waves-effect btn grey lighten-4">
-              <i class="fas fa-stop"></i>
-            </button>
-          </div>
+        <div id="pomodo-clock" class="col s6 m4">
 
           <!--Description-->
           <div id="pomodo-clock-title">
@@ -96,6 +97,10 @@
             <ul style="color: #fafafa; text-shadow: 1px 1px 2px #000, 1px 1px 2px #000;" id="pomodo-sessions">
             </ul>
           </div>
+
+          
+          <!--Target-->
+          <div><input type="text" id="pomodo-clock-task" class="i18n-objective" placeholder="Scrivi il tuo obiettivo..."/></div>
         </div>
       </div>
 

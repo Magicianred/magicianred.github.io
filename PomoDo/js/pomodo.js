@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const startButton = document.querySelector("#pomodo-start");
   const stopButton = document.querySelector("#pomodo-stop");
+  const audioSwitchButton = document.querySelector("#audio-switch");
+  
+  const audioOnIcon = document.querySelector("#audio-on-icon");
+  const audioOffIcon = document.querySelector("#audio-off-icon");
 
   let isClockRunning = false;
   // 25 mins
@@ -12,7 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let breakSessionDuration = 300;
 
   let timeSpentInCurrentSession = 0;
-  let type = "Work";
+  const TypesEnum = {
+    WORK: 'Work',
+    BREAK: 'Break'
+  }
+  let currentType = TypesEnum.WORK;
 
   let currentTaskLabel = document.querySelector("#pomodo-clock-task");
 
@@ -49,6 +57,19 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleClock(true);
   });
 
+  // Audio properties
+  let audioStatus = false;
+  const soundBell = new Audio('./sounds/328825_4877562-lq.mp3');
+  const soundBellBreak = new Audio('./sounds/377639_7003434-lq.mp3');
+  const soundTimer = new Audio('./sounds/32937_29541-lq.mp3');
+
+  if(audioSwitchButton) {
+    audioStatus = true;
+    audioSwitchButton.addEventListener("click", () => {
+      toggleAudioSwitch();
+    });
+  }
+
 
   workDurationInput.addEventListener("input", () => {
     updatedWorkSessionDuration = minuteToSeconds(workDurationInput.value);
@@ -66,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleClock = reset => {
     togglePlayPauseIcon(reset);
     if (reset) {
+      soundTimer.pause();
       stopClock();
     } else {
       if (isClockStopped) {
@@ -75,10 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (isClockRunning === true) {
         // pause
+        soundTimer.pause();
         clearInterval(clockTimer);
         isClockRunning = false;
       } else {
         // start
+        soundTimer.loop = true;
+        audioStatus ? soundTimer.play() : null;
         clockTimer = setInterval(() => {
           stepDown();
           displayCurrentTimeLeftInSession();
@@ -102,17 +127,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hours > 0) result += `${hours}:`;
     result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`;
     progressBar.text.innerText = result.toString();
+
+    let textToDisplay = 'PomoDo (' + result.toString() +')';
+    if (currentType == TypesEnum.BREAK) {
+      textToDisplay += ' BREAK';
+    }
+    displayInTitleBar(textToDisplay);
   };
 
+  const displayInTitleBar = textToDisplay => {
+    document.title = textToDisplay;
+  }
+
   const stopClock = () => {
+    displayInTitleBar('PomoDo');
     setUpdatedTimers();
-    displaySessionLog(type);
+    displaySessionLog(currentType);
     clearInterval(clockTimer);
     isClockStopped = true;
     isClockRunning = false;
     currentTimeLeftInSession = workSessionDuration;
     displayCurrentTimeLeftInSession();
-    type = "Work";
+    currentType = TypesEnum.WORK;
     timeSpentInCurrentSession = 0;
     currentTaskLabel.disabled = false;
   };
@@ -122,24 +158,26 @@ document.addEventListener("DOMContentLoaded", () => {
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
     } else if (currentTimeLeftInSession === 0) {
-      if (type === "Work") {
+      if (currentType === TypesEnum.WORK) {
+        audioStatus ? soundBell.play() : null;
         currentTimeLeftInSession = breakSessionDuration;
-        displaySessionLog("Work");
-        type = "Break";
+        displaySessionLog(TypesEnum.WORK);
+        currentType = TypesEnum.BREAK;
         setUpdatedTimers();
         // new
         currentTaskLabel.value = $('.i18n-break').text();
         currentTaskLabel.disabled = true;
       } else {
+        audioStatus ? soundBellBreak.play() : null;
         currentTimeLeftInSession = workSessionDuration;
-        type = "Work";
+        currentType = TypesEnum.WORK;
         setUpdatedTimers();
         // new
         if (currentTaskLabel.value === $('.i18n-break').text()) {
           currentTaskLabel.value = workSessionLabel;
         }
         currentTaskLabel.disabled = false;
-        displaySessionLog("Break");
+        displaySessionLog(TypesEnum.BREAK);
       }
       timeSpentInCurrentSession = 0;
     }
@@ -149,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displaySessionLog = type => {
     const sessionsList = document.querySelector("#pomodo-sessions");
     const li = document.createElement("li");
-    if (type === "Work") {
+    if (currentType === TypesEnum.WORK) {
       sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : $('.i18n-work').text();
       workSessionLabel = sessionLabel;
     } else {
@@ -166,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setUpdatedTimers = () => {
-    if (type === "Work") {
+    if (currentType === TypesEnum.WORK) {
       currentTimeLeftInSession = updatedWorkSessionDuration
       ? updatedWorkSessionDuration
       : workSessionDuration;
@@ -176,6 +214,26 @@ document.addEventListener("DOMContentLoaded", () => {
       ? updatedBreakSessionDuration
       : breakSessionDuration;
       breakSessionDuration = currentTimeLeftInSession;
+    }
+  };
+
+  const toggleAudioSwitch = () => {
+    audioStatus = !audioStatus;
+    if (audioStatus) {
+      if (!audioOffIcon.classList.contains("hidden")) {
+        audioOffIcon.classList.add("hidden");
+      }
+      audioOnIcon.classList.remove("hidden");
+      if (isClockRunning) {
+          soundTimer.play();
+      }
+    } else {
+      if (!audioOnIcon.classList.contains("hidden")) {
+        audioOnIcon.classList.add("hidden");
+      }
+      audioOffIcon.classList.remove("hidden");
+      soundTimer.pause();
+      soundBell.pause();
     }
   };
 
@@ -202,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const calculateSessionProgress = () => {
     const sessionDuration =
-    type === "Work" ? workSessionDuration : breakSessionDuration;
+    currentType === TypesEnum.WORK ? workSessionDuration : breakSessionDuration;
     return (timeSpentInCurrentSession / sessionDuration) * 10;
   };
 
