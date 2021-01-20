@@ -19,7 +19,7 @@
   "dependencies": {
     "@dogstudio/highway": "^2.2.1",
     "core-js": "^3.6.5",
-    "gsap": "^3.2.6",
+    "gsap": "^3.6.0",
     "request": "^2.88.2"
   },
   "devDependencies": {}
